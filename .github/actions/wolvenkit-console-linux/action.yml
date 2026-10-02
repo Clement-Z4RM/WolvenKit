@@ -1,0 +1,14 @@
+name: WolvenKit Console Linux
+description: Execute WolvenKit commands
+author: Clement-Z4RM
+
+inputs:
+  command:
+    description: The command to run in the Docker
+    required: true
+
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    COMMAND: ${{ inputs.command }}
