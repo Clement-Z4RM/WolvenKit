@@ -11,7 +11,6 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/wolvenkit.consolelinux
 
 jobs:
   publish:
@@ -30,8 +29,18 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}-consolelinux
+          tags: |
+            type=raw,value=latest
+            type=ref,event=tag
+
       - name: Build and push image
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: ${{ env.IMAGE_NAME }}:latest,${{ env.IMAGE_NAME }}:${{ github.ref_name }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
