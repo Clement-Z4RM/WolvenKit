@@ -8,7 +8,7 @@ RUN dotnet publish ./WolvenKit.CLI/WolvenKit.CLI.csproj -o ./publish_cli_linux -
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
-ENV COMMAND=""
+ENV ARGUMENTS=""
 WORKDIR /App
 COPY --from=build /App/publish_cli_linux .
 COPY --from=build /App/entrypoint.sh .

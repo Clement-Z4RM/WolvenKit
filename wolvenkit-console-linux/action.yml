@@ -3,13 +3,13 @@ description: Execute WolvenKit commands
 author: Clement-Z4RM
 
 inputs:
-  command:
-    description: The command to run in the Docker
+  arguments:
+    description: The arguments to send to WolvenKit command
     required: true
 
 runs:
   using: docker
   image: docker://ghcr.io/clement-z4rm/wolvenkit-consolelinux:v0.1.4
   env:
-    COMMAND: ${{ inputs.command }}
-  entrypoint: "entrypoint.sh"
+    ARGUMENTS: ${{ inputs.arguments }}
+  entrypoint: "./entrypoint.sh"
