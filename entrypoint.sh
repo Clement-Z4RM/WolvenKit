@@ -1,4 +1,6 @@
 #!/bin/sh -l
 
+ls
 cd "${GITHUB_WORKSPACE}"
-echo "./WolvenKit.CLI $ARGUMENTS" | sh
+ls
+echo "./App/WolvenKit.CLI $ARGUMENTS" | sh
