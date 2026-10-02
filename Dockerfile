@@ -13,4 +13,3 @@ WORKDIR /App
 COPY --from=build /App/publish_cli_linux .
 COPY --from=build /App/entrypoint.sh .
 RUN chmod +x /App/entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]

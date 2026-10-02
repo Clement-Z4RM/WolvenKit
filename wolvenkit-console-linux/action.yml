@@ -12,3 +12,4 @@ runs:
   image: ghcr.io/clement-z4rm/wolvenkit-consolelinux:v0.1.3
   env:
     COMMAND: ${{ inputs.command }}
+  entrypoint: "entrypoint.sh"
